@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <head th:fragment="css">
+            <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+        </head>
+        <head th:fragment="js">
+            <script
+                    src="https://code.jquery.com/jquery-3.4.1.min.js"
+                    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFIBw8HfCJo="
+                    crossorigin="anonymous">
+            </script>
+            <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+            <script th:src="@{/js/bootstrap.min.js}"></script>
+        </head>
+    </head>
+    <body>
+        <nav
+                th:fragment="navbar"
+                class="navbar navbar-expand-lg navbar-light bg-light"
+        >
+            <a class="navbar-brand font-weight-bold text-success" href="/">
+                SIPILOT
+            </a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link active text-secondary" th:href="@{/}">
+                        <b>   Pilot   </b> <span class="=sr-only"></span>
+                    </a>
+                    <a class="nav-item nav-link active text-secondary" th:href="@{/}">
+                        <b>   Penerbangan   </b> <span class="=sr-only"></span>
+                    </a>
+                    <a class="nav-item nav-link active text-secondary" th:href="@{/}">
+                        <b>   Cari   </b> <span class="=sr-only"></span>
+                    </a>
+                </ul>
+                <b th:text="${title}" style="text-align:right;"></b>
+            </div>
+        </nav>
+        <div class="footer text-center" th:fragment="footer">
+            <b> Made With Love By Muhammad Fiqri Adrian </b>
+            <p>Waktu saat ini : <span id="datetime"></span></p>
+
+            <script>
+                var dt = new Date();
+                document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
+            </script>
+        </div>
+    </body>
+</html>

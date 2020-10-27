@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>SIPILOT</title>
+        <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+        <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    </head>
+    <body>
+    <style>
+        .center-box{
+            margin: auto;
+            margin-top: 50px;
+            width: 50%;
+            border: 3px solid green;
+            padding: 100px;
+            text-align: center;
+            font-size: 36px;
+        }
+        .center{
+            margin: auto;
+            margin-top: 50px;
+            width: 50%;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+        <nav th:replace="fragments/fragment :: navbar(title = 'You are now at Home')"></nav>
+        <div class="container-fluid">
+            <div class="center-box">
+                    <b>Selamat Datang Di SiPilot</b>
+            </div>
+            <div class="center">
+                <p>Daftar Fitur :</p>
+                <table>
+                    <tr>
+                        <a th:href="@{/}" class="btn btn-primary" style="margin: 5px;">Pilot</a>
+                    </tr>
+                    <tr>
+                        <a th:href="@{/}" class="btn btn-primary" style="margin: 5px;">Penerbangan</a>
+                    </tr>
+                    <tr>
+                        <a th:href="@{/}" class="btn btn-primary" style="margin: 5px;">Cari</a>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <div th:replace="fragments/fragment :: footer"></div>
+    </body>
+</html>
