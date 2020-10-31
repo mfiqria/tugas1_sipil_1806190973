@@ -20,7 +20,6 @@ import java.util.List;
 public class Pilot_PenerbanganModel implements Serializable{
     @Id
     @Column(name = "id", nullable = false)
-    @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPilot_Penerbangan;
 
@@ -29,15 +28,13 @@ public class Pilot_PenerbanganModel implements Serializable{
     @Column(name = "tanggal_penugasan", nullable = false)
     private Date tanggalPenugasan;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false , targetEntity = PilotModel.class)
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToOne
     @JoinColumn(name = "id_pilot", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private PilotModel pilotModel;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false , targetEntity = PenerbanganModel.class)
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToOne
     @JoinColumn(name = "id_penerbangan", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore

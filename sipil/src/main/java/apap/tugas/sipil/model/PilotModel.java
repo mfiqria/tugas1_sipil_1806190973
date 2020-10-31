@@ -1,10 +1,9 @@
 package apap.tugas.sipil.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,7 +19,6 @@ import java.util.List;
 public class PilotModel implements Serializable{
     @Id
     @Column(name = "id", nullable = false)
-    @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPilot;
 
@@ -41,6 +39,7 @@ public class PilotModel implements Serializable{
 
     @NotNull
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "tanggal_lahir", nullable = false)
     private Date tanggalLahir;
 
@@ -53,15 +52,13 @@ public class PilotModel implements Serializable{
     @Column(name = "jenis_kelamin", nullable = false)
     private Integer jenisKelamin;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, targetEntity = MaskapaiModel.class)
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_maskapai", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private MaskapaiModel maskapaiModel;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, targetEntity = AkademiModel.class)
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_akademi", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
@@ -149,4 +146,6 @@ public class PilotModel implements Serializable{
     public void setListPilot_Penerbangan(List<Pilot_PenerbanganModel> listPilot_Penerbangan) {
         this.listPilot_Penerbangan = listPilot_Penerbangan;
     }
+
+
 }

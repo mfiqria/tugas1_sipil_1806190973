@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Pilot Pada Penerbangan</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<style>
+    .center{
+        margin: auto;
+        margin-top: 50px;
+        width: 50%;
+        padding: 20px;
+        text-align: center;
+        font-size: 20px;
+    }
+</style>
+<nav th:replace="fragments/fragment :: navbar(title = 'Tambah Pilot Pada Penerbangan')"></nav>
+<div class="container-fluid">
+    <div class="center">
+        <b th:text="'Pilot bernama ' + ${namaPilot}+ ' berhasil ditambahkan pada penerbangan ' + ${kode}"></b>
+        <br>
+        <a th:href="@{/penerbangan/}"style="margin: 5px;">Kembali ke Daftar Penerbangan</a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ package apap.tugas.sipil.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,7 +18,6 @@ import java.util.List;
 public class PenerbanganModel implements Serializable{
     @Id
     @Column(name = "id", nullable = false)
-    @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPenerbangan;
 
@@ -38,6 +38,7 @@ public class PenerbanganModel implements Serializable{
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "waktu", nullable = false)
     private Date waktu;
 

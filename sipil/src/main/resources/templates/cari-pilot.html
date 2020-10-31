@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cari Pilot</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<style>
+    .center{
+        margin: auto;
+        margin-top: 50px;
+        width: 25%;
+        padding: 10px;
+        font-size: 18px;
+    }
+</style>
+<nav th:replace="fragments/fragment :: navbar(title = 'Cari Pilot')"></nav>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">Cari Pilot</div>
+        <div class="card-body center">
+            <form th:action="@{/cari/pilot}" method="GET">
+                <table>
+                    <tr>
+                        <td>Pilih Kode Maskapai</td>
+                        <td>Pilih Nama Akademi </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="kode" class="form-control">
+                                <option th:value="${idMaskapai}" th:text="'Kode Maskapai'"></option>
+                                <option th:each="maskapai : ${listMaskapai}" th:value="${maskapai.kode}" th:text="${maskapai.kode}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="idAkademi" class="form-control">
+                                <option th:value="${idAkademi}" th:text="'Nama Akademi'"></option>
+                                <option th:each="akademi : ${listAkademi}" th:value="${akademi.idAkademi}" th:text="${akademi.namaAkademi}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="submit" class=" btn btn-primary">Cari</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
