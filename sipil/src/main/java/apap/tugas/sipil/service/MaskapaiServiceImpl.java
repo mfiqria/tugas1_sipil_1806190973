@@ -20,4 +20,23 @@ public class MaskapaiServiceImpl implements MaskapaiService{
         return maskapaiDb.findById(idMaskapai).get();
     }
 
+    @Override
+    public List<MaskapaiModel> getMaskapaiList() {return maskapaiDb.findAll();}
+
+
+    @Override
+    public MaskapaiModel getMaskapaiByKode(String kode) {
+        return maskapaiDb.findByKode(kode).get();
+    }
+
+    @Override
+    public MaskapaiModel getMaskapaiByNama(String namaMaskapai) {
+        return maskapaiDb.findByNamaMaskapai(namaMaskapai).get();
+    }
+
+    @Override
+    public MaskapaiModel updateMaskapai(MaskapaiModel maskapai) {
+        return null;
+    }
+
 }

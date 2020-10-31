@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>View All Pilot</title>
+        <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+        <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    </head>
+    <body>
+    <nav th:replace="fragments/fragment :: navbar(title = 'View All Pilot')"></nav>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">Daftar Seluruh Pilot</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <a th:href="@{/pilot/tambah/}" class="btn btn-success"><b>+ Tambah Pilot</b></a>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>NIP</th>
+                        <th>NIK</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Jenis Kelamin</th>
+                        <th></th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            th:each="pilot, iterationStatus : ${listPilot}"
+                        >
+                        <td th:text="${iterationStatus.count}"></td>
+                        <td th:text="${pilot.namaPilot}"></td>
+                        <td th:text="'20' + ${pilot.nip} + '00'"></td>
+                        <td th:text="${pilot.nik}"></td>
+                        <td th:text="${pilot.tanggalLahir}"></td>
+                        <td th:if="${pilot.jenisKelamin == 1}">Laki Laki</td>
+                        <td th:if="${pilot.jenisKelamin == 2}">Perempuan</td>
+                        <td>
+                            <a th:href="@{/pilot/} + ${pilot.nip}" class="btn btn-secondary">Lihat</a></td>
+                        </td>
+                        <td>
+                            <a th:href="@{/pilot/ubah/} + ${pilot.nip}" class="btn btn-dark">Ubah</a></td>
+                        </td>
+                        <td>
+                            <a th:href="@{/pilot/delete/} + ${pilot.nip}" class="btn btn-danger">Hapus</a></td>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

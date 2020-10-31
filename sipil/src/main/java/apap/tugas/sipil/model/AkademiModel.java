@@ -18,7 +18,6 @@ import java.util.List;
 public class AkademiModel implements Serializable{
     @Id
     @Column(name = "id", nullable = false)
-    @Size(max = 20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAkademi;
 

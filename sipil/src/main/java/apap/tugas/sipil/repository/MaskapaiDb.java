@@ -11,4 +11,8 @@ import java.util.Optional;
 @Repository
 public interface MaskapaiDb extends JpaRepository<MaskapaiModel, Long> {
     Optional<MaskapaiModel> findById(Long idMaskapai);
+
+    Optional<MaskapaiModel> findByNamaMaskapai(String namaMaskapai);
+
+    Optional<MaskapaiModel> findByKode(String kode);
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Data Pilot</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(title = 'Ubah Penerbangan')"></nav>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">Ubah Penerbangan</div>
+        <div class="card-body">
+            <form th:action="@{/penerbangan/ubah}" th:object="${penerbangan}" method="POST">
+                <input type="hidden" th:field="*{idPenerbangan}" />
+                Kode<br>
+                <input type="text" name="kode" th:value="*{kode}" />
+                <br><br>
+                Waktu<br>
+                <input type="datetime-local" name="waktu" th:value="*{waktu}" />
+                <br><br>
+                Kota Asal<br>
+                <input type="text" name="kotaAsal" th:value="*{kotaAsal}" />
+                <br><br>
+                Kota Tujuan<br>
+                <input type="text" name="kotaTujuan" th:value="*{kotaTujuan}" />
+                <br><br>
+                <a th:href="@{/penerbangan/}" class="btn btn-outline-dark" style="margin: 5px;">Batal</a>
+                <button type="submit" value="Submit" class="btn btn-dark" style="margin: 5px;">Simpan</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

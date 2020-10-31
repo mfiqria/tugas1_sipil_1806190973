@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Tambah Pilot</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<style>
+    .center-box{
+        margin: auto;
+        margin-top: 50px;
+        width: 25%;
+        border: 3px solid green;
+        padding: 10px;
+        font-size: 18px;
+    }
+</style>
+<nav th:replace="fragments/fragment :: navbar(title = 'Add Pilot')"></nav>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">Tambah Pilot</div>
+        <div class="card-body center-box">
+            <form th:action="@{/pilot/tambah}" th:object="${pilot}" method="POST">
+                Nama<br>
+                <input type="text" name="namaPilot" />
+                <br><br>
+                NIK<br>
+                <input type="text" name="nik" />
+                <br><br>
+                Tempat Lahir<br>
+                <input type="text" name="tempatLahir" />
+                <br><br>
+                Tanggal Lahir<br>
+                <input type="date" name="tanggalLahir" />
+                <br><br>
+                Jenis Kelamin <br>
+                <select class="form-control" name="jenisKelamin">
+                    <option value="1">Laki Laki</option>
+                    <option value="2">Perempuan</option>
+                </select>
+                <br>
+                Sekolah <br>
+                <select class="form-control" name="akademiModel">
+                    <option th:each="akademi : ${akademiList}"
+                            th:value="${akademi.idAkademi}"
+                            th:text="${akademi.namaAkademi}"/>
+                </select> <br>
+                Maskapai <br>
+                <select class="form-control" name="maskapaiModel">
+                    <option th:each="maskapai : ${maskapaiList}"
+                            th:value="${maskapai.idMaskapai}"
+                            th:text="${maskapai.namaMaskapai}"/>
+                </select> <br>
+                <a th:href="@{/pilot/}" class="btn btn-outline-dark" style="margin: 5px;">Batal</a>
+                <button type="submit" value="Submit" class="btn btn-dark" style="margin: 5px;">Tambah</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

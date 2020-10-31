@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Gagal Hapus Penerbangan</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<style>
+    .center{
+        margin: auto;
+        margin-top: 50px;
+        width: 50%;
+        padding: 10px;
+        font-size: 18px;
+    }
+</style>
+<nav th:replace="fragments/fragment :: navbar(title = 'Hapus Penerbangan')"></nav>
+<div class="container-fluid center">
+    <h3 th:text="'Penerbangan ' + ${penerbangan.kode} + ' gagal dihapus karena terdapat pilot yang bertugas'"></h3>
+    <a th:href="@{/penerbangan}">Kembali ke Daftar Penerbangan</a>
+</div>
+
+</body>
+</html>

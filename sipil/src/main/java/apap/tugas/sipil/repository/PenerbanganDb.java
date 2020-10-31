@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface PenerbanganDb extends JpaRepository<PenerbanganModel, Long> {
     Optional<PenerbanganModel> findById(Long idPenerbangan);
+    Optional<PenerbanganModel> findByKode(String kode);
 }
